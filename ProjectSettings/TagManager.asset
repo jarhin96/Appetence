@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FamilyMember
   - Clothing
+  - Floor
   layers:
   - Default
   - TransparentFX

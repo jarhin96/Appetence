@@ -12,7 +12,10 @@ public class LevelLoader : MonoBehaviour
     private float animationTime = 1f;
 
     // Start is called before the first frame update
-
+    public void LoadLevelEvent(string levelName)
+    {
+        StartCoroutine(LoadLevel(levelName));
+    }
     public IEnumerator LoadLevel(string loadLevelName)
     {
         animator.SetTrigger("Start");

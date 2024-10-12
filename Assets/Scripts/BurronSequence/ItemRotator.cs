@@ -49,6 +49,10 @@ public class ItemRotator : MonoBehaviour
     [SerializeField]
     private AudioClip failSound;
 
+    [SerializeField] AnimatedBox[] animatedBoxPrefab;
+
+    [SerializeField] Transform _spawnPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -107,6 +111,16 @@ public class ItemRotator : MonoBehaviour
         else if (buttonSequencer.GetNumberSequence().Length == itemReader.item.itemSequence.Length)
         {
             Debug.Log("Correct");
+            foreach (var box in animatedBoxPrefab)
+            {
+                if(box.itemName == item.itemName)
+                {
+                    AnimatedBox currentBox = Instantiate(box, buttons.transform);
+                    currentBox.transform.position = _spawnPoint.position;
+                }
+            }
+            
+
             item = itemReader.item = chosenObjects[Random.Range(0, chosenObjects.Count)];
             StartCoroutine(itemReader.CorrectnessDisplay("Correct"));
             StartCoroutine(CorrectColorChanger());
